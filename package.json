@@ -1,0 +1,66 @@
+{
+  "name": "@schibstedspain/openads-demo",
+  "version": "1.0.0",
+  "description": "OpenAds Demo: OpenAds Advertising library usage demos",
+  "main": "dist/",
+  "scripts": {
+    "cleanDistFolder": "rm -Rf ./dist",
+    "build": "npm run cleanDistFolder && babel src --ignore test,demo --out-dir dist ",
+    "deploy": "npm run cleanDistFolder && npm run demo:build && npm run now:upload",
+    "demo": "npm run cleanDistFolder && npm run demo:build && npm run server",
+    "demo:build": "webpack --config ./src/webpack/webpack.config.js --progress --profile --colors --display-error-details --display-cached",
+    "now:upload": "now -n openads dist/",
+    "test": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"test/**/*.js\" && npm run test:integration",
+    "test:integration": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"itest/**/*.js\"",
+    "server": "http-server './dist' -p 8080",
+    "coverage": "istanbul cover --report html _mocha -- ./*test --recursive --compilers js:babel-register",
+    "coverage:ci": "istanbul cover _mocha -- ./*test --recursive --compilers js:babel-register && codecov",
+    "watch": "onchange 'src/**/*.js' -- npm run build",
+    "lint": "sui-lint js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scm-spain/OpenAds-demo.git"
+  },
+  "keywords": [
+    "ads",
+    "advertising",
+    "schibsted",
+    "openads"
+  ],
+  "author": "The Mighty Ducks of Advertising",
+  "license": "ISC",
+  "devDependencies": {
+    "@s-ui/lint": "^2.7.0",
+    "babel-cli": "^6.24.0",
+    "babel-loader": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-sui": "1",
+    "babel-register": "^6.24.0",
+    "copy-webpack-plugin": "^4.2.3",
+    "html-webpack-plugin": "^2.30.1",
+    "http-server": "^0.10.0",
+    "mocha": "^5.1.1",
+    "now": "^9.3.3",
+    "onchange": "^3.3.0",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.10.0"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "babel": {
+    "presets": [
+      "sui"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  },
+  "dependencies": {
+    "@schibstedspain/openads": "^2.2.0"
+  }
+}
