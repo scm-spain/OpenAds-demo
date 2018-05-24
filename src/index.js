@@ -1,10 +1,15 @@
 import OpenAds from '@schibstedspain/openads'
+import AppNexusConnector from '@schibstedspain/openads-appnexus'
 
-const openAds = OpenAds.init({config: {
+const appNexusConnector = AppNexusConnector.init({
+  config: {
+    member: 3397
+  }
+})
+
+const openAds = OpenAds.init({config:{
   Sources: {
-    AppNexus: {
-      Member: 3397
-    }
+    AppNexus: appNexusConnector
   }
 }})
 
