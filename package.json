@@ -61,6 +61,7 @@
     ]
   },
   "dependencies": {
-    "@schibstedspain/openads": "^2.2.0"
+    "@schibstedspain/openads": "^3.0.0",
+    "@schibstedspain/openads-appnexus": "^1.0.1"
   }
 }
