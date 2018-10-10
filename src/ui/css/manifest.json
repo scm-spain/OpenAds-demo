@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/?utm_source=homescreen",
+  "start_url": "banner_banner_banner.html",
   "background_color": "#000",
   "theme_color": "#9CCCEC",
   "display": "standalone"

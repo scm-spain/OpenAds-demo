@@ -13,7 +13,7 @@
     "now:upload": "now -n openads dist/",
     "test": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"test/**/*.js\" && npm run test:integration",
     "test:integration": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"itest/**/*.js\"",
-    "server": "http-server './dist' -p 8080",
+    "server": "http-server './dist' -p 8080 -S -K ./key.pem -C ./certificate.pem",
     "coverage": "istanbul cover --report html _mocha -- ./*test --recursive --compilers js:babel-register",
     "coverage:ci": "istanbul cover _mocha -- ./*test --recursive --compilers js:babel-register && codecov",
     "watch": "onchange 'src/**/*.js' -- npm run build",
