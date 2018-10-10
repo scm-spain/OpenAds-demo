@@ -44,8 +44,8 @@ p {
 }
 
 .head {
-    background: url(../img/img-head.jpg) center center no-repeat;
-    background-size: cover;
+    /*background: url(../img/img-head.jpg) center center no-repeat;*/
+    /*background-size: cover;*/
     position: relative;
 }
 
@@ -98,9 +98,10 @@ pre {
 }
 
 code {
-    display: inline-block;
+    display: block;
     text-align: left;
     padding: 1em;
+    white-space: pre-wrap;
 }
 
 .nav {
@@ -193,8 +194,8 @@ code {
 }
 
 .foot {
-    background: url(../img/img-foot.jpg) center center no-repeat;
-    background-size: cover;
+    /*background: url(../img/img-foot.jpg) center center no-repeat;*/
+    /*background-size: cover;*/
     position: relative;
 }
 
@@ -282,6 +283,9 @@ code {
 
 
 @media screen and (max-width: 667px) {
+    html {
+        font-size: 54.9%;
+    }
 
     #ad-Demo {
         column-count: 2;

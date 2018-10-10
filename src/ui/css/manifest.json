@@ -1,0 +1,20 @@
+{
+  "short_name": "OpenAds",
+  "name": "OpenAds",
+  "icons": [
+    {
+      "src":"fireworks-icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src":"fireworks-icon192x192.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#000",
+  "theme_color": "#9CCCEC",
+  "display": "standalone"
+}

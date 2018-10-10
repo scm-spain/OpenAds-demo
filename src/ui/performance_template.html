@@ -5,17 +5,16 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <meta content="true" name="HandheldFriendly">
     <meta content="width" name="MobileOptimized">
     <meta content="width=device-width" name="viewport">
-    <meta content="width=768, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="Description" content="OpenAds Local Environment Tester Appnexus">
+    <meta name="theme-color" content="#9CCCEC">
     <meta content="telephone=no" name="format-detection">
     <title>OpenAds Local Environment Tester</title>
     <link rel="stylesheet" href="css/normalize.css"/>
     <link rel="stylesheet" href="css/demo.css?20"/>
+    <link rel="manifest" href="css/manifest.json">
 </head>
 
 
@@ -159,23 +158,34 @@ setInterval(() => openAds.refreshPosition({id: 'ad3'}), 5000)
     <div class="container footer">
         <ul class="footer-webs">
             <li>
-                <a href="http://www.schibsted.es/" target="_blank" title="Schibsted Spain">
-                    <img class="schibsted-logo" src="img/schibsted-white.png">
+                <a href="https://www.schibsted.es/" target="_blank" title="Schibsted Spain"rel="noopener">
+                    <img class="schibsted-logo" src="https://static.milanuncios.com/20181009113202/imagenes/home/schibsted-spain-logo.jpg" alt="Shibsted Logo">
                 </a>
             </li>
-            <li><a href="http://www.fotocasa.es/" target="_blank">fotocasa.es</a></li>
-            <li><a href="http://www.inmogeo.com/" target="_blank">inmogeo.com</a></li>
-            <li><a href="http://www.vibbo.com/" target="_blank">vibbo.com</a></li>
-            <li><a href="https://www.infojobs.net/" target="_blank">Infojobs.net</a></li>
-            <li><a href="http://www.coches.net/" target="_blank">coches.net</a></li>
-            <li><a href="http://www.milanuncios.com/" target="_blank">milanuncios.com</a></li>
-            <li><a href="http://www.scm-re.com/" target="_blank">inmobiliaria en Europa</a></li>
+            <li><a href="https://www.fotocasa.es/" target="_blank" title="Fotocasa"rel="noopener">fotocasa.es</a></li>
+            <li><a href="https://www.inmogeo.com/" target="_blank" title="Inmogeo"rel="noopener">inmogeo.com</a></li>
+            <li><a href="https://www.vibbo.com/" target="_blank" title="Vibbo"rel="noopener">vibbo.com</a></li>
+            <li><a href="https://www.infojobs.net/" target="_blank" title="Infojobs"rel="noopener">Infojobs.net</a></li>
+            <li><a href="https://www.coches.net/" target="_blank" title="Coches"rel="noopener">coches.net</a></li>
+            <li><a href="https://www.milanuncios.com/" target="_blank" title="Milanuncios"rel="noopener">milanuncios.com</a></li>
+            <li><a href="https://www.scm-re.com/" target="_blank"  title="Inmobiliaria en Europa"rel="noopener">inmobiliaria en Europa</a></li>
         </ul>
         <ul>
             <li>© 2018 Schibsted Classified Media Spain S.L.</li>
         </ul>
     </div>
 </footer>
-
+<script>
+  if ('serviceWorker' in navigator) {
+    console.log("Will service worker register?");
+    navigator.serviceWorker.register('service-worker.js').then(function(reg){
+      console.log("Yes it did.");
+    }).catch(function(err) {
+      console.log("No it didn't. This happened: ", err)
+    });
+  } else {
+    console.log("No acepta ServiceWorkerservice-worker.js")
+  }
+</script>
 </body>
 </html>
