@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xml:lang="es" lang="es">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="true" name="HandheldFriendly">
+    <meta content="width" name="MobileOptimized">
+    <meta content="width=device-width" name="viewport">
+    <meta name="Description" content="OpenAds Local Environment Tester Appnexus">
+    <meta name="theme-color" content="#9CCCEC">
+    <meta content="telephone=no" name="format-detection">
+    <title>OpenAds Local Environment Tester</title>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/demo.css?20"/>
+    <link rel="manifest" href="js/manifest.json">
+    <script>
+      window.utag_data = {'ads_name_page': 'cochesnet/accesorios/home', 'is_msite': false, 'event_name': 'list', 'pl_screen_view': 4, 'middle1_div_id': 'PubMiddle1'};
+    </script>
+</head>
+
+<body div id="js-scrollspy">
+<header class="head">
+    <div class="alpha"></div>
+    <h1>OpenAds</h1>
+    <h2>Demo</h2>
+</header>
+<nav class="js-scrollspy-nav nav">
+    <ul id="ad-Demo">
+        <li><a href="#one">Initialize</a></li>
+        <li><a href="#two">Create Positions</a></li>
+        <li><a href="#three">Display Positions</a></li>
+        <li><a href="#four">Refresh Positions</a></li>
+    </ul>
+    <button class="ad-DemoButton">MENU</button>
+</nav>
+<main class="js-scrollspy-content main container">
+    <div class="canvas">
+        <div id="single_formats">
+            <div id="single_banner"></div>
+            <div class="roadblock">
+                <div id="PubTop1"></div>
+                <div id="PubMiddle1"></div>
+            </div>
+            <div id="single_video"></div>
+            <div class="bubbles">
+                <div id="bubble1"></div>
+                <div id="bubble2"></div>
+                <div id="bubble3"></div>
+            </div>
+            <div id="single_native"></div>
+        </div>
+        <div id="combined_formats">
+            <div id="triple_banner">
+                <div id="banner1"></div>
+                <div id="banner2"></div>
+                <div id="banner3"></div>
+            </div>
+            <div id="banner_bubbles">
+                <div id="banner_bubbles1"></div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="foot">
+    <div class="alpha"></div>
+    <div class="container footer">
+        <ul class="footer-webs">
+            <li>
+                <a href="https://www.schibsted.es/" target="_blank" title="Schibsted Spain"rel="noopener">
+                    <img class="schibsted-logo" src="https://static.milanuncios.com/20181009113202/imagenes/home/schibsted-spain-logo.jpg" alt="Shibsted Logo">
+                </a>
+            </li>
+            <li><a href="https://www.fotocasa.es/" target="_blank" title="Fotocasa"rel="noopener">fotocasa.es</a></li>
+            <li><a href="https://www.inmogeo.com/" target="_blank" title="Inmogeo"rel="noopener">inmogeo.com</a></li>
+            <li><a href="https://www.vibbo.com/" target="_blank" title="Vibbo"rel="noopener">vibbo.com</a></li>
+            <li><a href="https://www.infojobs.net/" target="_blank" title="Infojobs"rel="noopener">Infojobs.net</a></li>
+            <li><a href="https://www.coches.net/" target="_blank" title="Coches"rel="noopener">coches.net</a></li>
+            <li><a href="https://www.milanuncios.com/" target="_blank" title="Milanuncios"rel="noopener">milanuncios.com</a></li>
+            <li><a href="https://www.scm-re.com/" target="_blank"  title="Inmobiliaria en Europa"rel="noopener">inmobiliaria en Europa</a></li>
+        </ul>
+        <ul>
+            <li>© 2018 Schibsted Classified Media Spain S.L.</li>
+        </ul>
+    </div>
+</footer>
+<script>
+  if ('serviceWorker' in navigator) {
+    console.log("Will service worker register?");
+    navigator.serviceWorker.register('js/service-worker.js').then(function(reg){
+      console.log("Yes it did.");
+    }).catch(function(err) {
+      console.log("No it didn't. This happened: ", err)
+    });
+  } else {
+    console.log("No acepta ServiceWorkerservice-worker.js")
+  }
+</script>
+</body>
+</html>
