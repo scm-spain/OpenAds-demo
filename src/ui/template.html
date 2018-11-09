@@ -38,51 +38,67 @@
         <div class="canvas">
             <section id="one">
                 <h3>Initialize</h3>
-                <pre><code>import OpenAds from '../openads/infrastructure/bootstrap/index'
+                <pre><code>import OpenAds from '@schibstedspain/openads'
+        import AppNexusConnector from '@schibstedspain/openads-appnexus'
 
-    const openAds = OpenAds.init({config: {
-      Sources: {
-        AppNexus: {
-          Member: 3397
-        }
-      }
-    }})
-    }</code></pre>
+        const appNexusConnector = AppNexusConnector.init({
+          config: {
+            pageOpts: {
+              member: 3296
+            }
+          }
+        })
+
+        const openAds = OpenAds.init({config:{
+          Sources: {
+            AppNexus: appNexusConnector
+          }
+        }})</code></pre>
             </section>
             <section id="two">
                 <h3>Create Positions</h3>
                 <pre><code>const positionOne = openAds.addPosition({
   id: 'ad1',
-  name: 'ad number one',
-  source: 'AppNexus',
-  placement: 'es-cn-wph-ocasion-list-x_65',
-  segmentation: {
-    'es-sch-ads_name_page': 'cochesnet/ocasion/listado',
-    'es-sch-event_name': 'list',
-    'aa-sch-country_code': 'es',
-    'aa-sch-supply_type': 'wph',
-    'es-sch-section': 'ocasion',
-    'aa-sch-page_type': 'list',
-    'es-sch-adformat': 'x65'
-  },
-  sizes: [[300, 250], [320, 250]]
+  name: 'med-rect',
+  specification: {
+   source: 'AppNexus',
+   appnexus: {
+     targetId: 'ad1',
+     invCode: 'es-cn-wph-ocasion-list-x_65',
+     keywords: {
+         'es-sch-ads_name_page': 'cochesnet/ocasion/listado',
+         'es-sch-event_name': 'list',
+         'aa-sch-country_code': 'es',
+         'aa-sch-supply_type': 'wph',
+         'es-sch-section': 'ocasion',
+         'aa-sch-page_type': 'list',
+         'es-sch-adformat': 'x65'
+     },
+     sizes: [[300, 250], [320, 250]]
+   }
+  }
 })
 
 const positionTwo = openAds.addPosition({
   id: 'ad2',
-  name: 'ad number two',
-  source: 'AppNexus',
-  placement: 'es-cn-wde-ocasion-list-top_2',
-  segmentation: {
-    'es-sch-ads_name_page': 'cochesnet/ocasion/listado',
-    'es-sch-event_name': 'list',
-    'aa-sch-country_code': 'es',
-    'aa-sch-supply_type': 'wde',
-    'es-sch-section': 'ocasion',
-    'aa-sch-page_type': 'list',
-    'es-sch-adformat': 'top2'
-  },
-  sizes: [[728, 90], [1, 1], [728, 161]]
+  name: 'med-rect',
+  specification: {
+    source: 'AppNexus',
+    appnexus: {
+      targetId: 'ad2',
+      invCode: 'es-cn-wph-ocasion-list-x_65',
+      keywords: {
+          'es-sch-ads_name_page': 'cochesnet/ocasion/listado',
+          'es-sch-event_name': 'list',
+          'aa-sch-country_code': 'es',
+          'aa-sch-supply_type': 'wph',
+          'es-sch-section': 'ocasion',
+          'aa-sch-page_type': 'list',
+          'es-sch-adformat': 'x65'
+      },
+      sizes: [[300, 250], [320, 250]]
+    }
+  }
 })
   </code></pre>
             </section>
@@ -101,24 +117,37 @@ const positionTwo = openAds.addPosition({
                 <h3>Refresh Positions</h3>
                 <pre><code>
 openAds.addPosition({
-    id: 'ad1_with_error',
-    name: 'ad_error',
+  id: 'ad3',
+  name: 'med-rect',
+  specification: {
     source: 'AppNexus',
-    placement: 'placement_not_found',
-    segmentation: {
-    'es-sch-ads_name_page': 'segmentation/not/found'
-    },
-    sizes: [[300, 250], [320, 250]]
+    appnexus: {
+      targetId: 'ad3',
+      invCode: 'es-cn-wph-ocasion-list-x_65',
+      keywords: {
+        'es-sch-ads_name_page': 'cochesnet/ocasion/listado',
+        'es-sch-event_name': 'list',
+        'aa-sch-country_code': 'es',
+        'aa-sch-supply_type': 'wph',
+        'es-sch-section': 'ocasion',
+        'aa-sch-page_type': 'list',
+        'es-sch-adformat': 'x65'
+      },
+      sizes: [[300, 250], [320, 250]]
+    }
+  }
 })
 .then(position => openAds.displayPosition({id: position.id}))
 .catch(error =>
     openAds.refreshPosition({
     id: error.position.id,
-    position: {
-        name: 'new name',
-        placement: 'new-placement-to-update',
-        segmentation: {
-        'es-sch-ads_name_page': 'new/segmentation/to/page',
+    name: 'new name',
+    specification: {
+        appnexus: {
+          invCode: 'new-placement-to-update',
+          keywords: {
+            'es-sch-ads_name_page': 'new/segmentation/to/page',
+          }
         }
     }
 })
@@ -129,26 +158,31 @@ openAds.addPosition({
                 <div id="ad_refresh"></div>
                 <pre><code>
 openAds.addPosition({
-    id: 'ad3',
-    name: 'ad number two',
+  id: 'ad3',
+  name: 'med-rect',
+  specification: {
     source: 'AppNexus',
-    placement: 'es-cn-wde-ocasion-list-top_2',
-    segmentation: {
-    'es-sch-ads_name_page': 'cochesnet/ocasion/listado',
-    'es-sch-event_name': 'list',
-    'aa-sch-country_code': 'es',
-    'aa-sch-supply_type': 'wde',
-    'es-sch-section': 'ocasion',
-    'aa-sch-page_type': 'list',
-    'es-sch-adformat': 'top2'
-    },
-    sizes: [[728, 90], [1, 1], [728, 161]]
+    appnexus: {
+      targetId: 'ad3',
+      invCode: 'es-cn-wph-ocasion-list-x_65',
+      keywords: {
+        'es-sch-ads_name_page': 'cochesnet/ocasion/listado',
+        'es-sch-event_name': 'list',
+        'aa-sch-country_code': 'es',
+        'aa-sch-supply_type': 'wph',
+        'es-sch-section': 'ocasion',
+        'aa-sch-page_type': 'list',
+        'es-sch-adformat': 'x65'
+      },
+      sizes: [[300, 250], [320, 250]]
+    }
+  }
 })
-.then(position => openAds.displayPosition({id: position.id}))
+  .then(position => openAds.displayPosition({id: position.id}))
 
-setInterval(() => openAds.refreshPosition({id: 'ad3'}), 5000)
+setInterval(() => openAds.refreshPosition({id: 'ad3'}), 10000)
                 </code></pre>
-                <p>This Position is refreshed every five seconds</p>
+                <p>This Position is refreshed every ten seconds</p>
                 <div id="ad3"></div>
             </section>
 
