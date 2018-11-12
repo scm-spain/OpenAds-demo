@@ -1,86 +1,14 @@
-import OpenAds from '@schibstedspain/openads'
-import AppNexusConnector from '@schibstedspain/openads-appnexus'
+import {addSingleBannerFactory} from '../add_position'
+import {initOpenAds} from '../init_connector'
 
-const appNexusConnector = AppNexusConnector.init({
-  config: {
-    pageOpts: {
-      member: 3397
-    }
-  }
-})
+const openAds = initOpenAds()
 
-const openAds = OpenAds.init({
-  config: {
-    Sources: {
-      AppNexus: appNexusConnector
-    }
-  }
-})
+const addSingleBanner = addSingleBannerFactory(openAds)
 
 Promise.all([
-  openAds.addPosition({
-    id: 'banner1',
-    name: 'single banner',
-    specification: {
-      source: 'AppNexus',
-      appnexus: {
-        targetId: 'banner1',
-        invCode: 'es-cn-wde-accesorios-list-top_2',
-        keywords: {
-          'es-sch-ads_name_page': 'cochesnet/accesorios/home',
-          'es-sch-event_name': 'list',
-          'aa-sch-country_code': 'es',
-          'aa-sch-supply_type': 'wde',
-          'es-sch-section': 'accesorios',
-          'aa-sch-page_type': 'list',
-          'es-sch-adformat': 'top2'
-        },
-        sizes: [[728, 90]]
-      }
-    }
-  }),
-  openAds.addPosition({
-    id: 'banner2',
-    name: 'single banner',
-    specification: {
-      source: 'AppNexus',
-      appnexus: {
-        targetId: 'banner2',
-        invCode: 'es-cn-wde-accesorios-list-top_2',
-        keywords: {
-          'es-sch-ads_name_page': 'cochesnet/accesorios/home',
-          'es-sch-event_name': 'list',
-          'aa-sch-country_code': 'es',
-          'aa-sch-supply_type': 'wde',
-          'es-sch-section': 'accesorios',
-          'aa-sch-page_type': 'list',
-          'es-sch-adformat': 'top2'
-        },
-        sizes: [[728, 90]]
-      }
-    }
-  }),
-  openAds.addPosition({
-    id: 'banner3',
-    name: 'single banner',
-    specification: {
-      source: 'AppNexus',
-      appnexus: {
-        targetId: 'banner3',
-        invCode: 'es-cn-wde-accesorios-list-top_2',
-        keywords: {
-          'es-sch-ads_name_page': 'cochesnet/accesorios/home',
-          'es-sch-event_name': 'list',
-          'aa-sch-country_code': 'es',
-          'aa-sch-supply_type': 'wde',
-          'es-sch-section': 'accesorios',
-          'aa-sch-page_type': 'list',
-          'es-sch-adformat': 'top2'
-        },
-        sizes: [[728, 90]]
-      }
-    }
-  })
+  addSingleBanner('banner1'),
+  addSingleBanner('banner2'),
+  addSingleBanner('banner3')
 ]).then(([position1, position2, position3]) => {
   openAds.displayPosition({id: position1.id})
   openAds.displayPosition({id: position2.id})

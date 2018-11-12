@@ -1,70 +1,15 @@
-import OpenAds from '@schibstedspain/openads'
-import AppNexusConnector from '@schibstedspain/openads-appnexus'
 import bubbleCard from '../template/bubbleCardRenderer'
+import {addBubbleFactory} from '../add_position'
+import {initOpenAds} from '../init_connector'
 
-const appNexusConnector = AppNexusConnector.init({
-  config: {
-    member: 3397
-  }
-})
+const openAds = initOpenAds()
 
-const openAds = OpenAds.init({
-  config: {
-    Sources: {
-      AppNexus: appNexusConnector
-    }
-  }
-})
+const addBubble = addBubbleFactory(openAds)
 
 Promise.all([
-  openAds.addPosition({
-    id: 'bubble1',
-    name: 'ad bubbles',
-    source: 'AppNexus',
-    placement: 'es-fc-wde-home-home-bubble_1',
-    segmentation: {
-      'es-sch-ads_name_page': 'fotocasaes/home',
-      'es-sch-event_name': 'homepage',
-      'aa-sch-country_code': 'es',
-      'aa-sch-supply_type': 'wde',
-      'es-sch-section': 'home',
-      'aa-sch-page_type': 'home',
-      'es-sch-adformat': 'bubble1'
-    },
-    sizes: [[1, 1]]
-  }),
-  openAds.addPosition({
-    id: 'bubble2',
-    name: 'ad bubbles',
-    source: 'AppNexus',
-    placement: 'es-fc-wde-home-home-bubble_2',
-    segmentation: {
-      'es-sch-ads_name_page': 'fotocasaes/home',
-      'es-sch-event_name': 'homepage',
-      'aa-sch-country_code': 'es',
-      'aa-sch-supply_type': 'wde',
-      'es-sch-section': 'home',
-      'aa-sch-page_type': 'home',
-      'es-sch-adformat': 'bubble2'
-    },
-    sizes: [[1, 1]]
-  }),
-  openAds.addPosition({
-    id: 'bubble3',
-    name: 'ad bubbles',
-    source: 'AppNexus',
-    placement: 'es-fc-wde-home-home-bubble_3',
-    segmentation: {
-      'es-sch-ads_name_page': 'fotocasaes/home',
-      'es-sch-event_name': 'homepage',
-      'aa-sch-country_code': 'es',
-      'aa-sch-supply_type': 'wde',
-      'es-sch-section': 'home',
-      'aa-sch-page_type': 'home',
-      'es-sch-adformat': 'bubble3'
-    },
-    sizes: [[1, 1]]
-  })
+  addBubble('bubble_1'),
+  addBubble('bubble_2'),
+  addBubble('bubble_3')
 ]).then(([position1, position2, position3]) => {
   const htmlRendered1 = bubbleCard({json: position1.ad.data.native})
   const nativeDOMElement1 = window.document.getElementById(position1.id)
