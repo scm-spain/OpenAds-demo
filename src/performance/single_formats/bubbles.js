@@ -1,6 +1,6 @@
 import OpenAds from '@schibstedspain/openads'
 import AppNexusConnector from '@schibstedspain/openads-appnexus'
-import bubbleCard from "../template/bubbleCardRenderer";
+import bubbleCard from '../template/bubbleCardRenderer'
 
 const appNexusConnector = AppNexusConnector.init({
   config: {
@@ -8,12 +8,13 @@ const appNexusConnector = AppNexusConnector.init({
   }
 })
 
-const openAds = OpenAds.init({config:{
+const openAds = OpenAds.init({
+  config: {
     Sources: {
       AppNexus: appNexusConnector
     }
-  }})
-
+  }
+})
 
 Promise.all([
   openAds.addPosition({
@@ -64,19 +65,17 @@ Promise.all([
     },
     sizes: [[1, 1]]
   })
+]).then(([position1, position2, position3]) => {
+  const htmlRendered1 = bubbleCard({json: position1.ad.data.native})
+  const nativeDOMElement1 = window.document.getElementById(position1.id)
+  nativeDOMElement1.innerHTML = htmlRendered1
 
-])
-  .then(([position1,position2,position3]) => {
-      const htmlRendered1 = bubbleCard({json: position1.ad.data.native})
-      const nativeDOMElement1 = window.document.getElementById(position1.id)
-      nativeDOMElement1.innerHTML = htmlRendered1
+  console.log(position2, position3)
+  const htmlRendered2 = bubbleCard({json: position2.ad.data.native})
+  const nativeDOMElement2 = window.document.getElementById(position2.id)
+  nativeDOMElement2.innerHTML = htmlRendered2
 
-      console.log(position2,position3)
-      const htmlRendered2 = bubbleCard({json: position2.ad.data.native})
-      const nativeDOMElement2 = window.document.getElementById(position2.id)
-      nativeDOMElement2.innerHTML = htmlRendered2
-
-      const htmlRendered3 = bubbleCard({json: position3.ad.data.native})
-      const nativeDOMElement3 = window.document.getElementById(position3.id)
-      nativeDOMElement3.innerHTML = htmlRendered3
-  })
+  const htmlRendered3 = bubbleCard({json: position3.ad.data.native})
+  const nativeDOMElement3 = window.document.getElementById(position3.id)
+  nativeDOMElement3.innerHTML = htmlRendered3
+})

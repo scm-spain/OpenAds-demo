@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const nodeEnv = process.env.NODE_ENV || 'dev'
 const distMinified = (process.env.DIST_MINIFY || 'no') === 'yes'
 
-function chunkSort (a, b) {
+function chunkSort(a, b) {
   if (a.names[0] === 'OpenAdsDemo') {
     return 1
   } else {
@@ -15,7 +15,6 @@ function chunkSort (a, b) {
 }
 
 var webpackPlugins = [
-
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(nodeEnv)
   }),
@@ -25,18 +24,24 @@ var webpackPlugins = [
     filename: 'index.html',
     chunksSortMode: chunkSort
   }),
-  new CopyWebpackPlugin([{
-    from: 'src/ui/js',
-    to: 'js'
-  }]),
-  new CopyWebpackPlugin([{
-    from: 'src/ui/css',
-    to: 'css'
-  }]),
-  new CopyWebpackPlugin([{
+  new CopyWebpackPlugin([
+    {
+      from: 'src/ui/js',
+      to: 'js'
+    }
+  ]),
+  new CopyWebpackPlugin([
+    {
+      from: 'src/ui/css',
+      to: 'css'
+    }
+  ]),
+  new CopyWebpackPlugin([
+    {
       from: 'src/ui/img',
       to: 'img'
-  }])
+    }
+  ])
 ]
 
 if (distMinified) {
@@ -63,7 +68,7 @@ if (distMinified) {
 module.exports = [
   {
     entry: {
-      'OpenAdsDemo': './src/index.js'
+      OpenAdsDemo: './src/index.js'
     },
     output: {
       path: path.resolve(path.join(__dirname, '/../../', 'dist')),

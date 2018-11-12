@@ -1,13 +1,14 @@
 const bubbleCard = ({json}) => {
-    const title = json.title || ''
-    const body = json.body || ''
-    const price = json.price || ''
-    const address = json.address || ''
-    const image = json.image && json.image.url
-    const icon = json.icon && json.icon.url
-    const clickUrl = json.clickUrl
+  const title = json.title || ''
+  const body = json.body || ''
+  const price = json.price || ''
+  const address = json.address || ''
+  const image = json.image && json.image.url
+  const icon = json.icon && json.icon.url
+  const clickUrl = json.clickUrl
 
-    const imageFragment = image ? `
+  const imageFragment = image
+    ? `
     <div class="react-Slidy">
         <div>
             <div class="react-Slidy-frame is-ready">
@@ -15,15 +16,18 @@ const bubbleCard = ({json}) => {
             </div>
         </div>
     </div>
-  ` : ''
+  `
+    : ''
 
-    const iconFragment = icon ? `
+  const iconFragment = icon
+    ? `
     <div class="re-Card-promotionLogo">
         <img class="re-CardImage-image" src="${icon}">
     </div>
-  ` : ''
+  `
+    : ''
 
-    const html = `
+  const html = `
       <div class="re-Card ad-ClickTracker" onclick="javascript:window.open('${clickUrl}', '_blank')">
           <div class="sui-CardComposable">
               <div class="sui-CardComposable-primary">
@@ -56,7 +60,7 @@ const bubbleCard = ({json}) => {
           </div>
       </div>`
 
-    return html
+  return html
 }
 
 export default bubbleCard
