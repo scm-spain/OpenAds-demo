@@ -46,28 +46,27 @@ export const addSingleVideoFactory = openAds => id =>
 
 export const addBubbleFactory = openAds => code => {
   const id = code.replace('_', '')
-  return () =>
-    openAds.addPosition({
-      id: id,
-      name: 'ad bubbles',
-      specification: {
-        source: 'AppNexus',
-        appnexus: {
-          targetId: id,
-          invCode: `es-fc-wde-home-home-${code}`,
-          keywords: {
-            'es-sch-ads_name_page': 'fotocasaes/home',
-            'es-sch-event_name': 'homepage',
-            'aa-sch-country_code': 'es',
-            'aa-sch-supply_type': 'wde',
-            'es-sch-section': 'home',
-            'aa-sch-page_type': 'home',
-            'es-sch-adformat': id
-          }
+  return openAds.addPosition({
+    id: id,
+    name: 'ad bubbles',
+    specification: {
+      source: 'AppNexus',
+      appnexus: {
+        targetId: id,
+        invCode: `es-fc-wde-home-home-${code}`,
+        keywords: {
+          'es-sch-ads_name_page': 'fotocasaes/home',
+          'es-sch-event_name': 'homepage',
+          'aa-sch-country_code': 'es',
+          'aa-sch-supply_type': 'wde',
+          'es-sch-section': 'home',
+          'aa-sch-page_type': 'home',
+          'es-sch-adformat': id
         }
-      },
-      sizes: [[1, 1]]
-    })
+      }
+    },
+    sizes: [[1, 1]]
+  })
 }
 
 export const addSingleNativeFactory = openAds => id =>
