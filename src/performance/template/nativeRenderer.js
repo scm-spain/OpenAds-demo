@@ -1,13 +1,13 @@
 import STYLE from './nativeTemplateStyles'
 
 const nativeRenderer = ({json}) => {
-    const title = json.title || ''
-    const body = json.body || ''
-    const image = json.image && json.image.url
-    const icon = json.icon && json.icon.url
-    const clickUrl = json.clickUrl
+  const title = json.title || ''
+  const body = json.body || ''
+  const image = json.image && json.image.url
+  const icon = json.icon && json.icon.url
+  const clickUrl = json.clickUrl
 
-    const iconFragment = `
+  const iconFragment = `
       <div class="re-Card-promotionLogo">
         <div class="re-CardImage-link">
           <img class="re-CardImage-image" src="${icon}">
@@ -15,7 +15,8 @@ const nativeRenderer = ({json}) => {
       </div>
     `
 
-    const imageFragment = image ? `
+  const imageFragment = image
+    ? `
       <div class="react-Slidy">
           <div class="react-Slidy-frame is-ready">
               <div class="react-Slidy-slides">
@@ -25,9 +26,10 @@ const nativeRenderer = ({json}) => {
               </div>
           </div>
       </div>
-  ` : ''
+  `
+    : ''
 
-    const html = `
+  const html = `
     ${STYLE}
       <div class="re-Card ad-Fc-Native ad-ClickTracker" onclick="javascript:window.open('${clickUrl}', '_blank')">
           <div class="sui-CardComposable">
@@ -70,6 +72,6 @@ const nativeRenderer = ({json}) => {
           </div>
        </div>
 `
-    return html
+  return html
 }
 export default nativeRenderer
