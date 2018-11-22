@@ -8,7 +8,7 @@
     "build": "npm run cleanDistFolder && babel src --ignore test,demo --out-dir dist ",
     "deploy": "npm run cleanDistFolder && npm run demo:build && npm run now:upload",
     "demo": "npm run cleanDistFolder && npm run demo:build && npm run server",
-    "demo:build": "DIST_MINIFY='yes' webpack --config ./src/webpack/webpack.config.js --progress --profile --colors --display-error-details --display-cached",
+    "demo:build": "DIST_MINIFY='no' webpack --config ./src/webpack/webpack.config.js --progress --profile --colors --display-error-details --display-cached",
     "demo:performance": "npm run cleanDistFolder && webpack --config ./src/webpack/webpack.performance.config.js --progress --profile --colors --display-error-details --display-cached && npm run server",
     "now:upload": "now -n openads dist/",
     "test": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"test/**/*.js\" && npm run test:integration",
@@ -63,6 +63,6 @@
   },
   "dependencies": {
     "@schibstedspain/openads": "^4.0.0",
-    "@schibstedspain/openads-appnexus": "^2.0.0"
+    "@schibstedspain/openads-appnexus": "file:../OpenAds-appnexus-prebid"
   }
 }
