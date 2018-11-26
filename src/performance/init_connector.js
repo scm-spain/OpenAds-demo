@@ -1,5 +1,5 @@
 import OpenAds from '@schibstedspain/openads'
-import AppNexusConnector from '@schibstedspain/openads-appnexus'
+import AppNexusConnector from '@schibstedspain/openads-appnexus-prebid'
 
 export const initOpenAds = () => {
   const appNexusConnector = AppNexusConnector.init({
