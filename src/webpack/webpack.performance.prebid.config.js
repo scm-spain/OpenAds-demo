@@ -11,7 +11,7 @@ var webpackPlugins = [
   }),
   new CopyWebpackPlugin([
     {
-      from: 'src/ui/performance_index.html',
+      from: 'src/ui/performance_prebid_index.html',
       to: 'index.html'
     }
   ]),
@@ -82,27 +82,27 @@ const moduleRules = {
 }
 
 const entries = {
-  banner: './src/performance/single_formats/banner.js',
-  bubbles: './src/performance/single_formats/bubbles.js',
-  native: './src/performance/single_formats/native.js',
-  roadblock: './src/performance/single_formats/roadblock.js',
-  video: './src/performance/single_formats/video.js',
+  banner: './src/performance_prebid/single_formats/banner.js',
+  bubbles: './src/performance_prebid/single_formats/bubbles.js',
+  native: './src/performance_prebid/single_formats/native.js',
+  roadblock: './src/performance_prebid/single_formats/roadblock.js',
+  video: './src/performance_prebid/single_formats/video.js',
   banner_banner_banner:
-    './src/performance/combined_formats/banner_banner_banner.js',
-  banner_bubbles: './src/performance/combined_formats/banner_bubbles.js',
+    './src/performance_prebid/combined_formats/banner_banner_banner.js',
+  banner_bubbles: './src/performance_prebid/combined_formats/banner_bubbles.js',
   banner_bubbles_native:
-    './src/performance/combined_formats/banner_bubbles_native.js',
+    './src/performance_prebid/combined_formats/banner_bubbles_native.js',
   roadblock_banner_native:
-    './src/performance/combined_formats/roadblock_banner_native.js',
+    './src/performance_prebid/combined_formats/roadblock_banner_native.js',
   roadblock_video_native:
-    './src/performance/combined_formats/roadblock_video_native.js'
+    './src/performance_prebid/combined_formats/roadblock_video_native.js'
 }
 
 Object.keys(entries).forEach(key =>
   webpackPlugins.push(
     new HtmlWebpackPlugin({
       title: `Open Ads Demo Performance ${key}`,
-      template: 'src/ui/performance_template.html',
+      template: 'src/ui/performance_prebid_template.html',
       chunks: [key],
       filename: `${key}.html`
     })

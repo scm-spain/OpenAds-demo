@@ -1,6 +1,6 @@
 {
   "name": "@schibstedspain/openads-demo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "OpenAds Demo: OpenAds Advertising library usage demos",
   "main": "dist/",
   "scripts": {
@@ -10,6 +10,8 @@
     "demo": "npm run cleanDistFolder && npm run demo:build && npm run server",
     "demo:build": "DIST_MINIFY='yes' webpack --config ./src/webpack/webpack.config.js --progress --profile --colors --display-error-details --display-cached",
     "demo:performance": "npm run cleanDistFolder && webpack --config ./src/webpack/webpack.performance.config.js --progress --profile --colors --display-error-details --display-cached && npm run server",
+    "demo:prebid": "npm run cleanDistFolder && webpack --config ./src/webpack/webpack.prebid.config.js --progress --profile --colors --display-error-details --display-cached && npm run server",
+    "demo:performance:prebid": "npm run cleanDistFolder && webpack --config ./src/webpack/webpack.performance.prebid.config.js --progress --profile --colors --display-error-details --display-cached && npm run server",
     "now:upload": "now -n openads dist/",
     "test": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"test/**/*.js\" && npm run test:integration",
     "test:integration": "mocha --recursive --require babel-polyfill --compilers js:babel-register \"itest/**/*.js\"",
@@ -63,6 +65,7 @@
   },
   "dependencies": {
     "@schibstedspain/openads": "^4.0.0",
-    "@schibstedspain/openads-appnexus": "^2.0.0"
+    "@schibstedspain/openads-appnexus": "^2.0.0",
+    "@schibstedspain/openads-appnexus-prebid": "^1.0.2"
   }
 }

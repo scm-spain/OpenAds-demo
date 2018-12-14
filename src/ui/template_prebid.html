@@ -20,13 +20,15 @@
     <link rel="stylesheet" href="css/demo.css?5"/>
     <script type="text/javascript" src="js/highlight.min.js"></script>
     <script type="text/javascript" src="js/scrollspy.js"></script>
+    <script src="https://c.dcdn.es/prebid/fotocasa/dev/prebid.js" async></script>
+    <script src="https://acdn.adnxs.com/ast/ast.js" async></script>
 </head>
 
 
 <body id="js-scrollspy">
     <header class="head alpha">
         <h1>OpenAds</h1>
-        <h2>Demo</h2>
+        <h2>Demo with Prebid</h2>
     </header>
     <nav class="js-scrollspy-nav nav">
         <ul id="ad-Demo">
@@ -42,9 +44,9 @@
             <section id="one">
                 <h3>Initialize</h3>
                 <pre><code>import OpenAds from '@schibstedspain/openads'
-import AppNexusConnector from '@schibstedspain/openads-appnexus'
+import AppNexusConnectorPrebid from '@schibstedspain/openads-appnexus-prebid'
 
-const appNexusConnector = AppNexusConnector.init({
+const appNexusConnectorPrebid = AppNexusConnectorPrebid.init({
     config: {
         pageOpts: {
             member: 3296
@@ -55,7 +57,7 @@ const appNexusConnector = AppNexusConnector.init({
 const openAds = OpenAds.init({
     config:{
         Sources: {
-            AppNexus: appNexusConnector
+            AppNexus: appNexusConnectorPrebid
         }
     }
 })</code></pre>
@@ -80,6 +82,30 @@ const openAds = OpenAds.init({
                 'es-sch-adformat': 'x65'
             },
             sizes: [[300, 250], [320, 250]]
+        },
+        prebid: {
+            code: 'ad1',
+            mediaTypes: {
+                banner: {
+                    sizes: [[300, 250]]
+                }
+            },
+            bids: [
+                {
+                    bidder: 'criteo',
+                    params: {
+                        zoneId: '779158'
+                    }
+                },
+                {
+                    bidder: 'rubicon',
+                    params: {
+                        accountId: '15052',
+                        siteId: '88944',
+                        zoneId: '419134'
+                    }
+                }
+            ]
         }
     }
 })
@@ -135,6 +161,30 @@ positionTwo.then(position => openAds.displayPosition({id: position.id}))</code><
                 'es-sch-adformat': 'x65'
             },
             sizes: [[300, 250], [320, 250]]
+        },
+        prebid: {
+            code: 'ad3',
+            mediaTypes: {
+                banner: {
+                    sizes: [[300, 250]]
+                }
+            },
+            bids: [
+                {
+                    bidder: 'criteo',
+                    params: {
+                        zoneId: '779158'
+                    }
+                },
+                {
+                    bidder: 'rubicon',
+                    params: {
+                        accountId: '15052',
+                        siteId: '88944',
+                        zoneId: '419134'
+                    }
+                }
+            ]
         }
     }
 })
@@ -155,6 +205,7 @@ positionTwo.then(position => openAds.displayPosition({id: position.id}))</code><
     .then(position => openAds.displayPosition({id: position.id}))
 )</code></pre>
                 <p>This Position initially were not available so after handle the error was refreshed with new segmentation</p>
+
                 <pre><code>openAds.addPosition({
     id: 'ad3',
     name: 'med-rect',
@@ -173,6 +224,30 @@ positionTwo.then(position => openAds.displayPosition({id: position.id}))</code><
                 'es-sch-adformat': 'x65'
             },
             sizes: [[300, 250], [320, 250]]
+        },
+        prebid: {
+            code: 'ad3',
+            mediaTypes: {
+                banner: {
+                    sizes: [[300, 250]]
+                }
+            },
+            bids: [
+                {
+                    bidder: 'criteo',
+                    params: {
+                        zoneId: '779158'
+                    }
+                },
+                {
+                    bidder: 'rubicon',
+                    params: {
+                        accountId: '15052',
+                        siteId: '88944',
+                        zoneId: '419134'
+                    }
+                }
+            ]
         }
     }
 })
